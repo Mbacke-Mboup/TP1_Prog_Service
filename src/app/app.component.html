@@ -5,25 +5,37 @@
   </header>
   <div class="row">
     <div class="col-3">
-      <form (ngSubmit)="searchArtist()" *ngIf="!result">
+      <form (ngSubmit)="searchArtist()" *ngIf="!resultArtist && !resultSong">
         <input type="text" name="artistName" [(ngModel)]="artist" class="form-control" placeholder="Nom d'un artiste">
         <input type="submit" value="Rechercher l'artiste" class="btn btn-light">
       </form>
-      <form (ngSubmit)="newSearch()" *ngIf="result">
+      <form (ngSubmit)="newSearch()" *ngIf="resultArtist">
         <input type="submit" value="Nouvelle recherche">
+      </form>
+      <form (ngSubmit)="backAlbums()" *ngIf="resultSong">
+        <input type="submit" value="Retourner aux Albums">
       </form>
     </div>
     <div class="col artists">
         <h2>Résultats</h2>
-        <div *ngIf="result">
+        <div *ngIf="resultArtist">
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
       <div class="row">
-          <div *ngFor="let i of albums" class="col-4">
+          <div *ngFor="let i of albums" class="col-4" (click)="infoAlbum(i)">
             <img src="{{i.pochette}}" class="rounded rounded-5" alt="images">
             <p class="my-5" >{{i.name}}</p>
           </div>
           
     </div>
+		</div>
+    <div *ngIf="resultSong">
+		  <!-- L'affichage des artistes similaires sera ici 😩 -->
+      <ul>
+          <li *ngFor="let i of chansons">
+            <a href="{{i.url}}">{{i.name}}</a>
+          </li>
+          
+        </ul>
 		</div>
     </div>
   </div>
