@@ -19,6 +19,7 @@ export class AppComponent {
   artist : string = "";
   albums: Album [] = [];
   chansons : Chanson[] = []
+  
 
   // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
   // Le constructeur devra être ajouté ici
@@ -39,6 +40,7 @@ export class AppComponent {
     for(let a of x.topalbums.album){
       this.albums.push(new Album(a.name, a.image[3]['#text'], a.artist.name));
     }
+    this.artist = x.topalbums.album[0].artist.name;
     console.log(this.albums)
 
   }

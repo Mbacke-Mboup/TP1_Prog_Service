@@ -21,6 +21,7 @@
         <div *ngIf="resultArtist">
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
       <div class="row">
+        <h1 class="my-5">{{artist}}</h1>
           <div *ngFor="let i of albums" class="col-4" (click)="infoAlbum(i)">
             <img src="{{i.pochette}}" class="rounded rounded-5" alt="images">
             <p class="my-5" >{{i.name}}</p>
