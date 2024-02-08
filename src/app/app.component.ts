@@ -17,6 +17,7 @@ export class AppComponent {
   resultArtist : boolean = false;
   resultSong : boolean = false;
   artist : string = "";
+  nomAlbum : string = "";
   albums: Album [] = [];
   chansons : Chanson[] = []
   
@@ -54,11 +55,13 @@ export class AppComponent {
     this.resultSong = false;
     this.resultArtist = true;
     this.chansons.splice(0, this.albums.length);
+    this.nomAlbum = "";
   }
 
   async infoAlbum(album:Album):Promise<void>{
     this.resultArtist = false;
     this.resultSong = true;
+    this.nomAlbum = album.name;
     let x = await lastValueFrom(this.http.get<any>("https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=e34ebf8561ba7c653a21d1d99a1a0070&artist="+album.artist+"&album="+album.name+"&format=json"))
     
     for(const a of x.album.tracks.track){

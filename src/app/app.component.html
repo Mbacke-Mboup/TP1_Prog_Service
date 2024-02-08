@@ -16,27 +16,28 @@
         <input type="submit" value="Retourner aux Albums">
       </form>
     </div>
-    <div class="col artists">
+    <div class="col artists w-100">
         <h2>Résultats</h2>
         <div *ngIf="resultArtist">
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
-      <div class="row">
+      <div class="row w-100">
         <h1 class="my-5">{{artist}}</h1>
-          <div *ngFor="let i of albums" class="col-4" (click)="infoAlbum(i)">
-            <img src="{{i.pochette}}" class="rounded rounded-5" alt="images">
+          <div *ngFor="let i of albums" class="col-3 px-1" (click)="infoAlbum(i)">
+            <img src="{{i.pochette}}" class="img-fluid" alt="images">
             <p class="my-5" >{{i.name}}</p>
           </div>
           
-    </div>
+      </div>
 		</div>
     <div *ngIf="resultSong">
+      <h1 class="my-5">Chanson de <strong>{{nomAlbum}}</strong></h1>
 		  <!-- L'affichage des artistes similaires sera ici 😩 -->
-      <ul>
+      <ol>
           <li *ngFor="let i of chansons">
             <a href="{{i.url}}">{{i.name}}</a>
           </li>
           
-        </ul>
+        </ol>
 		</div>
     </div>
   </div>
